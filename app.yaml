@@ -1,0 +1,25 @@
+# https://cloud.google.com/appengine/docs/standard/go/config/appref
+runtime: go
+api_version: go1
+instance_class: F1
+automatic_scaling:
+  max_instances: 1
+  min_instances: 0
+  max_idle_instances: 1  # default value
+  min_pending_latency: automatic  # default value
+  max_pending_latency: 30ms
+
+skip_files:
+- ^node_modules/(.*/)?
+- ^src/(.*/)?
+
+handlers:
+# - url: /stylesheets
+#   static_dir: stylesheets
+
+# - url: /(.*\.(gif|png|jpg))$
+#   static_files: static/\1
+#   upload: static/.*\.(gif|png|jpg)$
+
+- url: /.*
+  script: _go_app
